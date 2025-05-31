@@ -7,6 +7,19 @@
 		"abi": [
 			{
 				"inputs": [],
+				"name": "displayName",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "name",
 				"outputs": [
 					{
@@ -47,11 +60,11 @@
 	},
 	"sources": {
 		"contracts/Hello.sol": {
-			"keccak256": "0xa6963a2b53babe66c47d78c7a000c90cfbb59f3151a8ff7ff704044b12e81ab3",
+			"keccak256": "0x45567120071addf5ec0428285d77777213168419cc6bed9378323a5bb44d1827",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4ffb234f9011c3429736291aaa45e89efa8870422a661bd48c0ee279f388ccb7",
-				"dweb:/ipfs/QmPG94dmed8FP1hiHEbLgjnmQmjvovfw2xBPBJhQu1WVs1"
+				"bzz-raw://15859fd653aa80c27580720b67b6664784ed3a2672bf9b3e3f13ffa6002828ea",
+				"dweb:/ipfs/QmRMfMNZ2rX1rmG15xt1oGzmCvi4m28GJqd2P4buaCwhxr"
 			]
 		}
 	},
