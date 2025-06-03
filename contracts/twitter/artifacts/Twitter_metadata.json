@@ -6,6 +6,24 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "_newTweetLength",
+						"type": "uint8"
+					}
+				],
+				"name": "changeTweetLength",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
@@ -34,31 +52,29 @@
 				"name": "getTweet",
 				"outputs": [
 					{
-						"components": [
-							{
-								"internalType": "address",
-								"name": "author",
-								"type": "address"
-							},
-							{
-								"internalType": "string",
-								"name": "content",
-								"type": "string"
-							},
-							{
-								"internalType": "uint256",
-								"name": "timestamp",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "likes",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct Twitter.Tweet",
-						"name": "",
-						"type": "tuple"
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "content",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "likeCount",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -77,6 +93,11 @@
 					{
 						"components": [
 							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
 								"internalType": "address",
 								"name": "author",
 								"type": "address"
@@ -93,13 +114,68 @@
 							},
 							{
 								"internalType": "uint256",
-								"name": "likes",
+								"name": "likeCount",
 								"type": "uint256"
 							}
 						],
-						"internalType": "struct Twitter.Tweet[]",
+						"internalType": "struct Twitter.TweetView[]",
 						"name": "",
 						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tweetId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "liker",
+						"type": "address"
+					}
+				],
+				"name": "hasLiked",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tweetId",
+						"type": "uint256"
+					}
+				],
+				"name": "likeTweet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -121,6 +197,11 @@
 				"name": "tweets",
 				"outputs": [
 					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
 						"internalType": "address",
 						"name": "author",
 						"type": "address"
@@ -138,6 +219,11 @@
 					{
 						"internalType": "uint256",
 						"name": "likes",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "likeCount",
 						"type": "uint256"
 					}
 				],
@@ -173,11 +259,11 @@
 	},
 	"sources": {
 		"contracts/twitter/Twitter.sol": {
-			"keccak256": "0xdf1f105dbfc073c79f88a5ba606e9d4701e9ffaee572d0f9c9203d39b5af1281",
+			"keccak256": "0x4879ac15ea707d5622cf30cc4f4e6ecc2873e5055c34520a1b2ed240900cc301",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5841866c3074257a8f5c40582ab9e1763b23dab9bf2a43a57d5eca9229c4f4a1",
-				"dweb:/ipfs/QmQAmWJrCyvNE186psfyiAJ9i7KoskRFb1hRhBHaf7hsgV"
+				"bzz-raw://0eea7195050bde9a32256a5ecafb711b92771b808a89d689a8bb5fdc719dcf7a",
+				"dweb:/ipfs/QmViNeTwE9JQCnWQKZymqPPCJWxPs7hMfE89prFcHjDbpu"
 			]
 		}
 	},
