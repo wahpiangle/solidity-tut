@@ -11,6 +11,62 @@
 				"type": "constructor"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "content",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "TweetCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "liker",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "TweetLiked",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint8",
@@ -129,6 +185,11 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					},
+					{
 						"internalType": "uint256",
 						"name": "tweetId",
 						"type": "uint256"
@@ -218,11 +279,6 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "likes",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
 						"name": "likeCount",
 						"type": "uint256"
 					}
@@ -259,11 +315,11 @@
 	},
 	"sources": {
 		"contracts/twitter/Twitter.sol": {
-			"keccak256": "0x4879ac15ea707d5622cf30cc4f4e6ecc2873e5055c34520a1b2ed240900cc301",
+			"keccak256": "0x987b30f37053155603a2786cf06c829973f1f1329df4f280ed37323877812973",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0eea7195050bde9a32256a5ecafb711b92771b808a89d689a8bb5fdc719dcf7a",
-				"dweb:/ipfs/QmViNeTwE9JQCnWQKZymqPPCJWxPs7hMfE89prFcHjDbpu"
+				"bzz-raw://27176fcbfe78349825dd7ab12bac677d3100e69a47ba3626038f034b6094c632",
+				"dweb:/ipfs/QmfKfmxSZsgv15yQ47HaVMAUdbmeC8bBQiZY1zXQhy9MNp"
 			]
 		}
 	},

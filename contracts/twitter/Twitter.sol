@@ -23,6 +23,14 @@ contract Twitter {
         uint256 likeCount;
     }
 
+    event TweetCreated(
+        uint256 id,
+        address indexed author,
+        string content,
+        uint256 timestamp
+    );
+    event TweetLiked(address indexed liker, address author, uint256 id);
+
     constructor() {
         owner = msg.sender;
     }
@@ -42,6 +50,7 @@ contract Twitter {
         newTweet.content = _tweet;
         newTweet.timestamp = block.timestamp;
         newTweet.likeCount = 0;
+        emit TweetCreated(newTweet.id, newTweet.author, newTweet.content, newTweet.timestamp);
     }
 
     function getTweet(address _owner, uint256 _i)
@@ -94,12 +103,13 @@ contract Twitter {
     }
 
     function likeTweet(address author, uint256 tweetId) external {
-        if(hasLiked(author, tweetId, msg.sender)){
+        if (hasLiked(author, tweetId, msg.sender)) {
             tweets[author][tweetId].likeCount -= 1;
             tweets[author][tweetId].likedBy[msg.sender] = false;
-        }else{
+        } else {
             tweets[author][tweetId].likeCount += 1;
             tweets[author][tweetId].likedBy[msg.sender] = true;
         }
+        emit TweetLiked(msg.sender, author, tweetId);
     }
 }
