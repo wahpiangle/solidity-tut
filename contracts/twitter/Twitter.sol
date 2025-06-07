@@ -1,10 +1,31 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-contract Twitter {
+import "@openzeppelin/contracts/access/Ownable.sol"; 
+import "contracts/twitter/Profile.sol";
+
+interface IProfile{
+    struct UserProfile{
+        string displayName;
+        string bio;
+    }
+    function getProfile(address user) external view returns (UserProfile memory);
+}
+
+contract Twitter is Ownable{
     uint8 maxTweetLength = 200;
-    address public owner;
     mapping(address => Tweet[]) public tweets;
+    IProfile profileContract;
+
+    constructor(address _profileContractAddress) Ownable(msg.sender){
+        profileContract = IProfile(_profileContractAddress);
+    }
+
+    modifier OnlyRegistered(){
+        IProfile.UserProfile memory userProfileTemp = profileContract.getProfile(msg.sender);
+        require(bytes(userProfileTemp.displayName).length > 0, "User is not registered.");
+        _;
+    }
 
     struct Tweet {
         uint256 id;
@@ -31,16 +52,7 @@ contract Twitter {
     );
     event TweetLiked(address indexed liker, address author, uint256 id);
 
-    constructor() {
-        owner = msg.sender;
-    }
-
-    modifier onlyOwner() {
-        require(msg.sender == owner, "You are not the owner");
-        _;
-    }
-
-    function createTweet(string memory _tweet) public {
+    function createTweet(string memory _tweet) public OnlyRegistered{
         require(bytes(_tweet).length <= maxTweetLength, "Tweet is too long");
 
         Tweet storage newTweet = tweets[msg.sender].push();
@@ -102,7 +114,7 @@ contract Twitter {
         return tweets[_owner][tweetId].likedBy[liker];
     }
 
-    function likeTweet(address author, uint256 tweetId) external {
+    function likeTweet(address author, uint256 tweetId) external OnlyRegistered {
         if (hasLiked(author, tweetId, msg.sender)) {
             tweets[author][tweetId].likeCount -= 1;
             tweets[author][tweetId].likedBy[msg.sender] = false;
